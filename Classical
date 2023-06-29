@@ -1,0 +1,44 @@
+using System;
+
+class Program
+{
+    static int BinarySearch(int[] array, int target)
+    {
+        int start = 0;
+        int end = array.Length - 1;
+
+        while (start <= end)
+        {
+            int mid = start + (end - start) / 2;
+
+            if (array[mid] == target)
+            {
+                return mid;
+            }
+
+            if (array[mid] < target)
+            {
+                start = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 2, 3, 4, 10, 40 };
+        int target = 10;
+
+        int result = BinarySearch(numbers, target);
+
+        if (result != -1)
+            Console.WriteLine("Element found at index " + result);
+        else
+            Console.WriteLine("Element not found in the array");
+    }
+}
